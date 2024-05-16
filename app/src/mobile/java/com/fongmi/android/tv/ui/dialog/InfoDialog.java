@@ -47,8 +47,8 @@ public class InfoDialog {
     }
 
     public InfoDialog url(String url) {
-        if (TextUtils.isEmpty(url)) url = "";
-        this.url = url.startsWith("data") ? url.substring(0, Math.min(url.length(), 128)).concat("...") : url;
+        if (url.startsWith("data")) this.url = "data***";
+        else this.url = url;
         return this;
     }
 
@@ -90,7 +90,6 @@ public class InfoDialog {
     }
 
     private String convert(String url) {
-        if (TextUtils.isEmpty(url)) url = "";
         return url.startsWith("http://127.0.0.1:7777") ? Uri.parse(url).getQueryParameter("url") : url;
     }
 
